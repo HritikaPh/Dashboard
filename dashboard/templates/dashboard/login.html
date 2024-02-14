@@ -1,0 +1,31 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4 shadow-lg p-4 bg-white rounded">
+      <form method="POST" class="form-signin">
+        {% csrf_token %}
+        <h2 class="h3 mb-4 text-center" style="color: blue;">Login</h2>
+
+
+        {% if form.errors %}
+          <div class="alert alert-danger" role="alert">
+            Invalid username or password.
+          </div>
+        {% endif %}
+
+        {% for field in form %}
+          <div class="mb-3">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+          </div>
+        {% endfor %}
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

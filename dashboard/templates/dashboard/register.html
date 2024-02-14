@@ -1,0 +1,26 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-sm-6 col-xs-8 shadow-lg p-4 bg-white rounded">
+      <h2 class="h3 mb-4 text-center" style="color: blue;">Sign Up</h2>
+
+      <form method="POST" class="needs-validation" novalidate>
+        {% csrf_token %}
+
+        {% for field in form %}
+          <div class="col-12 mb-3">
+            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }} {% if field.required %} <span class="text-danger">*</span> {% endif %}</label>
+            {{ field }}
+          </div>
+        {% endfor %}
+
+        <div class="col-12 mb-3">
+          <button type="submit" class="btn btn-primary w-100">Sign up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

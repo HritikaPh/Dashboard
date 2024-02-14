@@ -1,0 +1,26 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="container-fluid bg-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwI4jdF6VTpTPV_aI974HYVK7adW_aU5J96Q&usqp=CAU'); background-repeat: no-repeat; background-size: cover; min-height: 100vh;">
+    {% if user.is_authenticated %}
+        <div class="row row-cols-1 row-cols-md-2 justify-content-center align-items-center">
+            <div class="col content-section text-center">
+                <h1 class="mt-5 display-4" style="color: black;">Welcome, <span id="username" style="color: blue;">{{ user.username }}!</span></h1>
+                <p class="lead mt-3">What are you up to today?</p>
+                <div class="user-profile mt-5">
+                    <h2 class="h3 mt-3" style="color: green;">User Profile</h2>
+                    <p class="mt-3"><strong>Username:</strong> {{ user.username }}</p>
+                    <p class="mt-3"><strong>Email:</strong> {{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row row-cols-1 justify-content-center align-items-center">
+            <div class="col text-center">
+                <h1 class="mt-5 display-4">Welcome to User Dashboard</h1>
+                <p class="lead">Please <a href="{% url 'login' %}" class="text-decoration-none"><b>login</b></a> or <a href="{% url 'register' %}" class="text-decoration-none"><b>signup</b></a> to continue</p>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
